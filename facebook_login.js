@@ -95,6 +95,18 @@ async function comment(page, commentText){
     
 }
 
+async function image(page){
+    
+    await page.click('._5aqx')
+    //console.log("image selected")
+    await page.waitFor('._s50')
+    await page.waitFor(2000)
+    await page.evaluate(() => {
+        document.querySelector('._55sr').click()
+    })
+    //console.log("Button Clicked")
+}
+
 
 exports.gotopage = async function(){
     pageName = "addPageIdHere"
@@ -110,6 +122,10 @@ exports.gotopage = async function(){
     await goToPage(page, pageName)
 
     await comment(page, commentText)
+
+    await page.waitFor(2000)
+    
+    await image(page)
 }
 
 
